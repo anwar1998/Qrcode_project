@@ -19,7 +19,6 @@ class QrcodeController extends Controller
     {
         $user = User::find(auth::user()->id);
         $qrcodes = $user->qrcodes()->paginate(5);
-        ;
         return view('qrcode_page', ["qrcodes" => $qrcodes]);
     }
 
@@ -49,7 +48,7 @@ class QrcodeController extends Controller
             'qrcode_value' => $request->input('qrcode_value'),
             'user_id' => auth::user()->id,
         ]);
-        Session::flash('success', 'Bien sjouté');
+        Session::flash('success', 'Bien généré');
         return redirect('qcodes');
     }
 
@@ -98,6 +97,6 @@ class QrcodeController extends Controller
         $qrcode = Qrcode::find($id);
         $qrcode->Delete();
         Session::flash('success', 'Bien supprimé');
-        return redirect('qcodes');        //
+        return redirect('qcodes');  
     }
 }

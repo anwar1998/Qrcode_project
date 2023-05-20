@@ -46,17 +46,22 @@
 
 
 <body>
-    <input type="hidden" value="{{Session::get('success')}}" id="success">
-    <input type="hidden" value="{{session()->get('warning')}}" id="warning">
+    <input type="hidden" value="{{ Session::get('success') }}" id="success">
+    <input type="hidden" value="{{ session()->get('warning') }}" id="warning">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                @guest
+                @else
+
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Home
                 </a>
                 <a class="navbar-brand" href="{{ url('/qcodes') }}">
                     Qrcode
                 </a>
+                @endguest
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
